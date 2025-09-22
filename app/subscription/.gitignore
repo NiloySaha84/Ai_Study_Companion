@@ -1,0 +1,11 @@
+cat > .gitignore << 'EOF'
+node_modules/
+.vscode/
+.env
+.DS_Store
+.next/
+dist/
+build/
+npm-debug.log
+yarn-error.log
+EOF

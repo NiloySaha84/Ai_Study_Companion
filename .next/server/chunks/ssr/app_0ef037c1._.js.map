@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/niloysaha/Documents/Documents%20-%20Niloy%E2%80%99s%20MacBook%20Air/Udemy%20Web%20dev%20proj/AI%20Study%20Companion/app/favicon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 32, height: 31 }\n"],"names":[],"mappings":";;;;AAAA;;uCACe;IAAE,KAAA,kHAAG;IAAE,OAAO;IAAI,QAAQ;AAAG","debugId":null}}]
+}
