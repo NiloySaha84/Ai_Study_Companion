@@ -17,8 +17,18 @@ export const subjectsColors = {
 };
 
 export const voices = {
-  male: { casual: "2BJW5coyhAzSr8STdHbE", formal: "c6SfcYrb2t09NHXiT80T" },
-  female: { casual: "ZIlrSGI4jZqobxRKprJz", formal: "sarah" },
+  male: { 
+    casual: "pNInz6obpgDQGcFmaJgB", // Adam - Casual male voice
+    formal: "EXAVITQu4vr4xnSDxMaL", // Bella - Professional male voice
+    enthusiastic: "VR6AewLTigWG4xSOukaG", // Josh - Energetic male voice
+    patient: "pNInz6obpgDQGcFmaJgB" // Adam - Patient male voice
+  },
+  female: { 
+    casual: "EXAVITQu4vr4xnSDxMaL", // Bella - Casual female voice
+    formal: "sarah", // Sarah - Professional female voice
+    enthusiastic: "VR6AewLTigWG4xSOukaG", // Josh - Energetic voice
+    patient: "EXAVITQu4vr4xnSDxMaL" // Bella - Patient female voice
+  },
 };
 
 export const recentSessions = [

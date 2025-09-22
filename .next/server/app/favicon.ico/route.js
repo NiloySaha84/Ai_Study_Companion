@@ -1,6 +1,11 @@
 var R=require("../../chunks/[turbopack]_runtime.js")("server/app/favicon.ico/route.js")
-R.c("server/chunks/node_modules_next_6bb3a9b9._.js")
-R.c("server/chunks/[root-of-the-server]__147c551c._.js")
-R.m("[project]/.next-internal/server/app/favicon.ico/route/actions.js [app-rsc] (server actions loader, ecmascript)")
-R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/favicon--route-entry.js [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)")
-module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/favicon--route-entry.js [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)").exports
+R.c("server/chunks/node_modules_next_dist_compiled_@opentelemetry_api_index_d03d2993.js")
+R.c("server/chunks/node_modules_next_90e5edd3._.js")
+R.c("server/chunks/[root-of-the-server]__b825fa66._.js")
+R.c("server/chunks/node_modules_next_dist_esm_server_lib_patch-fetch_a55d7fe2.js")
+R.c("server/chunks/node_modules_next_dist_2755e5f0._.js")
+R.c("server/chunks/node_modules_next_dist_bea52298._.js")
+R.c("server/chunks/[root-of-the-server]__7422c471._.js")
+R.m(15934)
+R.m(90295)
+module.exports=R.m(90295).exports

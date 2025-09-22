@@ -12,7 +12,7 @@ export const getSubjectColor = (subject: string) => {
 };
 
 export const configureAssistant = (voice: string, style: string) => {
-  const voiceId = voices[voice as keyof typeof voices][
+  const voiceId = voices[voice as keyof typeof voices]?.[
           style as keyof (typeof voices)[keyof typeof voices]
           ] || "sarah";
 
@@ -22,21 +22,26 @@ export const configureAssistant = (voice: string, style: string) => {
         "Hello, let's start the session. Today we'll be talking about {{topic}}.",
     transcriber: {
       provider: "deepgram",
-      model: "nova-3",
+      model: "nova-2",
       language: "en",
     },
     voice: {
       provider: "11labs",
       voiceId: voiceId,
-      stability: 0.4,
-      similarityBoost: 0.8,
-      speed: 1,
-      style: 0.5,
+      // Improved voice settings for better continuity
+      stability: 0.6, // Increased for more consistent voice
+      similarityBoost: 0.7, // Slightly reduced to prevent over-processing
+      speed: 1.0, // Normal speed
+      style: 0.3, // Reduced style for more natural speech
       useSpeakerBoost: true,
+      // Additional voice settings
+      optimizeStreamingLatency: 2, // Optimize for real-time
     },
     model: {
       provider: "openai",
       model: "gpt-4",
+      temperature: 0.7, // Add temperature for more natural responses
+      maxTokens: 150, // Limit response length for voice
       messages: [
         {
           role: "system",
@@ -48,8 +53,10 @@ export const configureAssistant = (voice: string, style: string) => {
                     From time to time make sure that the student is following you and understands you.
                     Break down the topic into smaller parts and teach the student one part at a time.
                     Keep your style of conversation {{ style }}.
-                    Keep your responses short, like in a real voice conversation.
+                    Keep your responses short and conversational, like in a real voice conversation.
+                    Speak naturally and pause appropriately between sentences.
                     Do not include any special characters in your responses - this is a voice conversation.
+                    Always end your responses with a question or prompt to keep the conversation flowing.
               `,
         },
       ],

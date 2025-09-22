@@ -156,7 +156,7 @@ async function detectKeylessEnvDrift() {
         if (!keylessFile) {
             return;
         }
-        const envPublishableKey = ("TURBOPACK compile-time value", "pk_test_bWFpbi10ZXJyYXBpbi0xMi5jbGVyay5hY2NvdW50cy5kZXYk");
+        const envPublishableKey = ("TURBOPACK compile-time value", "pk_test_bW9yYWwtZWxmLTc1LmNsZXJrLmFjY291bnRzLmRldiQ");
         const envSecretKey = process.env.CLERK_SECRET_KEY;
         const hasEnvVars = Boolean(envPublishableKey || envSecretKey);
         const keylessFileHasKeys = Boolean((keylessFile == null ? void 0 : keylessFile.publishableKey) && (keylessFile == null ? void 0 : keylessFile.secretKey));

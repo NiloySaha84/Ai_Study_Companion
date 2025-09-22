@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/companions/[id]/page": "/companions/[id]",
+  "/companions/new/page": "/companions/new",
+  "/companions/page": "/companions",
+  "/favicon.ico/route": "/favicon.ico",
+  "/my-journey/page": "/my-journey",
+  "/page": "/",
+  "/sign-in/[[...sign-in]]/page": "/sign-in/[[...sign-in]]",
+  "/sign-up/[[...sign-up]]/page": "/sign-up/[[...sign-up]]",
+  "/subscription/page": "/subscription",
+  "/voice-test/page": "/voice-test"
+}

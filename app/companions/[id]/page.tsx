@@ -1,57 +1,98 @@
-import {getCompanion} from "@/lib/actions/companion.actions";
-import {currentUser} from "@clerk/nextjs/server";
-import {redirect} from "next/navigation";
-import {getSubjectColor} from "@/lib/utils";
-import Image from "next/image";
+import { getCompanion } from "@/lib/actions/companion.actions";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { getSubjectColor } from "@/lib/utils";
 import CompanionComponent from "@/components/CompanionComponent";
+import { Clock, BookOpen, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 interface CompanionSessionPageProps {
-    params: Promise<{ id: string}>;
+  params: Promise<{ id: string }>;
 }
 
 const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
-    const { id } = await params;
-    const companion = await getCompanion(id);
-    const user = await currentUser();
+  const { id } = await params;
+  const companion = await getCompanion(id);
+  const user = await currentUser();
 
-    const { name, subject, title, topic, duration } = companion;
+  const { name, subject, topic, duration } = companion;
 
-    if(!user) redirect('/sign-in');
-    if(!name) redirect('/companions')
+  if (!user) redirect('/sign-in');
+  if (!name) redirect('/companions');
 
-    return (
-        <main>
-            <article className="flex rounded-border justify-between p-6 max-md:flex-col">
-                <div className="flex items-center gap-2">
-                    <div className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden" style={{ backgroundColor: getSubjectColor(subject)}}>
-                        <Image src={`/icons/${subject}.svg`} alt={subject} width={35} height={35} />
-                    </div>
+  const getSubjectIcon = (subject: string) => {
+    const icons: { [key: string]: string } = {
+      mathematics: "🔢",
+      science: "🔬",
+      history: "📚",
+      language: "🌍",
+      coding: "💻",
+      economics: "💰",
+    };
+    return icons[subject.toLowerCase()] || "📖";
+  };
 
-                    <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2">
-                            <p className="font-bold text-2xl">
-                                {name}
-                            </p>
-                            <div className="subject-badge max-sm:hidden">
-                                {subject}
-                            </div>
-                        </div>
-                        <p className="text-lg">{topic}</p>
-                    </div>
+  return (
+    <div className="min-h-screen bg-muted/30">
+      <div className="container py-8">
+        {/* Back Button */}
+        <Link 
+          href="/companions" 
+          className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6 group"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+          Back to Library
+        </Link>
+
+        {/* Companion Header */}
+        <div className="card p-6 lg:p-8 mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex items-start gap-4">
+              {/* Subject Icon */}
+              <div 
+                className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center text-3xl lg:text-4xl group-hover:scale-110 transition-transform duration-300"
+                style={{ backgroundColor: getSubjectColor(subject) + '20' }}
+              >
+                {getSubjectIcon(subject)}
+              </div>
+
+              {/* Companion Info */}
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-2xl lg:text-3xl font-bold">{name}</h1>
+                  <span className="subject-badge">{subject}</span>
                 </div>
-                <div className="items-start text-2xl max-md:hidden">
-                    {duration} minutes
+                <p className="text-lg text-muted-foreground mb-3">{topic}</p>
+                <div className="flex items-center text-muted-foreground">
+                  <Clock className="w-4 h-4 mr-2" />
+                  <span className="text-sm">{duration} minutes</span>
                 </div>
-            </article>
+              </div>
+            </div>
 
-            <CompanionComponent
-                {...companion}
-                companionId={id}
-                userName={user.firstName!}
-                userImage={user.imageUrl!}
-            />
-        </main>
-    )
-}
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="btn-secondary">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Study Guide
+              </button>
+              <button className="btn-gradient">
+                Start Session
+              </button>
+            </div>
+          </div>
+        </div>
 
-export default CompanionSession
+        {/* Companion Interface */}
+        <CompanionComponent
+          {...companion}
+          companionId={id}
+          userName={user.firstName!}
+          userImage={user.imageUrl!}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default CompanionSession;

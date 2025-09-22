@@ -1,8 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/companions/[id]/page": "app/companions/[id]/page.js",
   "/companions/new/page": "app/companions/new/page.js",
   "/companions/page": "app/companions/page.js",
-  "/my-journey/page": "app/my-journey/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/subscription/page": "app/subscription/page.js"
 }
